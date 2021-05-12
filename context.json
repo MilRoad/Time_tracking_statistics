@@ -1,0 +1,56 @@
+{
+    "day": [
+        {
+            "number": 1,
+            "appName": "Pixel Launcher",
+            "usagePercentage": 48,
+            "usageDuration": 6345
+        },
+        {
+            "number": 2,
+            "appName": "RouteVisual",
+            "usagePercentage": 58,
+            "usageDuration": 1234
+        },
+        {
+            "number": 3,
+            "appName": "Chrome",
+            "usagePercentage": 23,
+            "usageDuration": 4321
+        }
+    ],
+    "week": [
+        {
+            "number": 1,
+            "appName": "Pixel Launcher",
+            "usagePercentage": 542,
+            "usageDuration": 63450
+        },
+        {
+            "number": 2,
+            "appName": "RouteVisual",
+            "usagePercentage": 685,
+            "usageDuration": 304040
+        }
+    ],
+    "month": [
+        {
+            "number": 1,
+            "appName": "Pixel Launcher",
+            "usagePercentage": 50822,
+            "usageDuration": 22222222
+        },
+        {
+            "number": 2,
+            "appName": "RouteVisual",
+            "usagePercentage": 1004595,
+            "usageDuration": 20202003
+        },
+        {
+            "number": 3,
+            "appName": "Chrome",
+            "usagePercentage": 5678,
+            "usageDuration": 4321000
+        }
+    ]
+}

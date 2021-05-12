@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOT project</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">IOT project</h5>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Main Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('statistics') }}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('screen_time') }}">Screen Time</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('real_time') }}" tabindex="-1">Real Time</a>
+      </li>
+    </ul>
+</div>
+<div class = "container mt-5">
+
+            <h1 style="margin-bottom: 40px">Mobile App Time Tracking Statistics</h1>
+            <h3 style="margin-bottom: 40px">Это удобный сервис для сбора статистики об используемых приложениях.</h3>
+            <h5>Зачем?</h5>
+            <h5>1. Контроль времени ребенка с техникой и играми</h5>
+            <h5>2. Отслеживание активности сотрудников работы</h5>
+            <h5 style="margin-bottom: 300px">2. Отслеживание собственной активности и затратов времени</h5>
+            <h7>Проект выполнен Орловым Кириллом и Лаисцевой Миленой в качестве
+                экзаменационной работы по направлению IOT.</h7>
+
+
+</div>
+
+</body>
+
+<style>
+    BODY {
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-family: Georgia;
+  }
+H1 {
+  font-size: 50px;
+  font-weight: normal;
+  cursor: pointer;
+  text-shadow: 1px 1px white,
+               2px 2px #777;
+  color: #333;
+  transition: all 1s;
+  }
+  H1:hover {
+    text-shadow: 1px 1px white,
+                 2px 2px blue;
+    color: dodgerblue;
+    }
+</style>
+</html>

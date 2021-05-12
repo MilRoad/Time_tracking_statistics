@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOT project</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">IOT project</h5>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Main Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('statistics') }}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('screen_time') }}">Screen Time</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('real_time') }}" tabindex="-1">Real Time</a>
+      </li>
+    </ul>
+</div>
+<div class = "container mt-5">
+
+            <h2 style="margin-bottom:30px">Screen time per day</h2>
+            <table class="table table-condensed" style="margin-bottom: 80px">
+                    <tbody>
+                        <tr>
+                            <td><strong>Total Time: </strong>{{data["totalTime"]}}</td>
+                            <td id="totalTime"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Awake Count: </strong>{{data["awakeCount"]}}</td>
+                            <td id="awakeCount"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>First Awake: </strong>{{data["firstAwake"]}}</td>
+                            <td id="firstAwake"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Last Awake: </strong>{{data["lastAwake"]}}</td>
+                            <td id="lastAwake"></td>
+                        </tr>
+                    </tbody>
+            </table>
+
+            <h5><strong>Обозначения:</strong></h5>
+            <h6><strong>Total Time</strong> - суммарное время включенного экрана в секундах</h6>
+            <h6><strong>Awake Count </strong> - суммарное количество включений (пробуждений) экрана</h6>
+            <h6><strong>First Awake</strong> время первого включения экрана</h6>
+            <h6><strong>Last Awake</strong> время последнего пробуждения</h6>
+
+</div>
+
+</body>
+<script>
+
+    $(document).ready(function() {
+
+    } );
+
+</script>
+
+<style>
+        BODY {
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-family: Georgia;
+  }
+</style>
+</html>

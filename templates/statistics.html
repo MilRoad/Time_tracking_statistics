@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOT project</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">IOT project</h5>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Main Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('statistics') }}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('screen_time') }}">Screen Time</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('real_time') }}" tabindex="-1">Real Time</a>
+      </li>
+    </ul>
+</div>
+<div class = "container mt-5">
+
+            <h2>Periodic statistics on application usage time</h2>
+            <label class="control-label" for="periods">Choose period</label>
+                <select id="periods" class="form-control selectpicker" style="margin-bottom:10px">
+                    <option value='1' selected>Per day</option>
+                    <option value='2'>Per week</option>
+                    <option value='3'>Per month</option>
+                </select>
+            <table class="table" id="table-day" style="margin-bottom: 80px">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">App Name</th>
+                  <th scope="col">Usage Percentage</th>
+                  <th scope="col">Usage Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for d in data["day"] %}
+                <tr>
+                  <th scope="row">{{d["number"]}}</th>
+                  <td>{{d["appName"]}}</td>
+                  <td>{{d["usagePercentage"]}}</td>
+                  <td>{{d["usageDuration"]}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+
+            <table class="table" id="table-week" style="margin-bottom: 80px">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">App Name</th>
+                  <th scope="col">Usage Percentage</th>
+                  <th scope="col">Usage Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for d in data["week"] %}
+                <tr>
+                  <th scope="row">{{d["number"]}}</th>
+                  <td>{{d["appName"]}}</td>
+                  <td>{{d["usagePercentage"]}}</td>
+                  <td>{{d["usageDuration"]}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+
+            <table class="table" id="table-month" style="margin-bottom: 80px">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">App Name</th>
+                  <th scope="col">Usage Percentage</th>
+                  <th scope="col">Usage Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for d in data["month"] %}
+                <tr>
+                  <th scope="row">{{d["number"]}}</th>
+                  <td>{{d["appName"]}}</td>
+                  <td>{{d["usagePercentage"]}}</td>
+                  <td>{{d["usageDuration"]}}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+
+    <h5><strong>Обозначения:</strong></h5>
+    <h6><strong>App Name</strong> - имя приложения</h6>
+    <h6><strong>Usage Percentatge </strong> - процент времени текущего приложения от общего времени</h6>
+    <h6><strong>Usage Duration</strong> суммарная продолжительность использования за период в секундах</h6>
+
+
+
+</div>
+
+</body>
+<script>
+    const $dayTable = $('#table-day');
+    const $weekTable = $('#table-week');
+    const $monthTable = $('#table-month');
+    let $periodSelect = $('#periods');
+
+    function changePeriod() {
+        if ($periodSelect.val() === '1') {
+            $dayTable.show();
+            $weekTable.hide();
+            $monthTable.hide();
+        }
+        if ($periodSelect.val() === '2') {
+            $dayTable.hide();
+            $weekTable.show();
+            $monthTable.hide();
+        }
+        if ($periodSelect.val() === '3') {
+            $dayTable.hide();
+            $weekTable.hide();
+            $monthTable.show();
+        }
+    }
+
+    $(document).ready(function() {
+        $weekTable.hide();
+        $monthTable.hide();
+        $periodSelect.on('change', function(){
+           changePeriod()
+        });
+
+    } );
+
+</script>
+
+<style>
+        BODY {
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-family: Georgia;
+  }
+    .form-control {
+        width: 30%;
+    }
+</style>
+</html>

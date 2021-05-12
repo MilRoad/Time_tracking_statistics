@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IOT project</title>
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">IOT project</h5>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Main Page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('statistics') }}">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('screen_time') }}">Screen Time</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('real_time') }}" tabindex="-1">Real Time</a>
+      </li>
+    </ul>
+</div>
+<div class = "container mt-5">
+
+            <h2 style="margin-bottom:30px">Real time statistic</h2>
+            <table class="table table-condensed" style="margin-bottom: 80px">
+                    <tbody>
+                        <tr>
+                            <td><strong>Is Screen On: </strong>{{data["isScreenOn"]}}</td>
+                            <td id="isScreenOn"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Time Info: </strong>{{data["timeInfo"]}}</td>
+                            <td id="timeInfo"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Last App: </strong>{{data["lastApp"]}}</td>
+                            <td id="lastApp"></td>
+                        </tr>
+                    </tbody>
+            </table>
+
+            <h5><strong>Обозначения:</strong></h5>
+            <h6><strong>Is Screen On</strong> - включен ли сейчас экран</h6>
+            <h6><strong>Time Info </strong> - если экран включен, то это продолжительность текущей сессии (сколько времени уже включен экран) в секундах;</h6>
+            <h6 style="margin-left: 94px">если экран выключен, то это время последней активности (когда был включен экран)</h6>
+            <h6><strong>Last App</strong> - имя приложения, которое активно либо сейчас (если экран включен), либо которое было активно последним (если экран выключен)</h6>
+
+</div>
+
+</body>
+<script>
+
+    $(document).ready(function() {
+
+    } );
+
+</script>
+
+<style>
+        BODY {
+  align-items: center;
+  justify-content: center;
+  background: white;
+  font-family: Georgia;
+  }
+</style>
+
+</html>
