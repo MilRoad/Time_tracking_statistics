@@ -1,1 +1,1 @@
-{"week": [{"number": 1, "appName": "Pixel Launcher", "usagePercentage": 542, "usageDuration": 63450}, {"number": 2, "appName": "RouteVisual", "usagePercentage": 685, "usageDuration": 304040}]}
+{"interval": "week", "info": [{"appName": "Pixel Launcher", "usagePercentage": 48, "usageDuration": 6345}, {"appName": "RouteVisual", "usagePercentage": 58, "usageDuration": 1234}, {"appName": "Chrome", "usagePercentage": 23, "usageDuration": 4321}]}

@@ -36,20 +36,21 @@
             <table class="table table-condensed" style="margin-bottom: 80px">
                     <tbody>
                         <tr>
-                            <td><strong>Total Time: </strong>{{data["totalTime"]}}</td>
-                            <td id="totalTime"></td>
+                            <td><strong>Total Time:</strong></td>
+                            <td id="totalTime">{{data["hours"]}} hours {{data["minutes"]}} minutes
+                            {{data["seconds"]}} seconds</td>
                         </tr>
                         <tr>
-                            <td><strong>Awake Count: </strong>{{data["awakeCount"]}}</td>
-                            <td id="awakeCount"></td>
+                            <td><strong>Awake Count:</strong></td>
+                            <td id="awakeCount">{{data["awakeCount"]}}</td>
                         </tr>
                         <tr>
-                            <td><strong>First Awake: </strong>{{data["firstAwake"]}}</td>
-                            <td id="firstAwake"></td>
+                            <td><strong>First Awake:</strong></td>
+                            <td id="firstAwake">{{data["awakeCount"]}}</td>
                         </tr>
                         <tr>
-                            <td><strong>Last Awake: </strong>{{data["lastAwake"]}}</td>
-                            <td id="lastAwake"></td>
+                            <td><strong>Last Awake:</strong></td>
+                            <td id="lastAwake">{{data["lastAwake"]}}</td>
                         </tr>
                     </tbody>
             </table>
@@ -57,8 +58,8 @@
             <h5><strong>Обозначения:</strong></h5>
             <h6><strong>Total Time</strong> - суммарное время включенного экрана в секундах</h6>
             <h6><strong>Awake Count </strong> - суммарное количество включений (пробуждений) экрана</h6>
-            <h6><strong>First Awake</strong> время первого включения экрана</h6>
-            <h6><strong>Last Awake</strong> время последнего пробуждения</h6>
+            <h6><strong>First Awake</strong> - время первого включения экрана</h6>
+            <h6><strong>Last Awake</strong> - время последнего пробуждения</h6>
 
 </div>
 

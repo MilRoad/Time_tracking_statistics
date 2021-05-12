@@ -13,14 +13,21 @@ def index():
 def statistics():
     with open('json_files/day_statistics.json') as json_file:
         data_day = json.load(json_file)
+        print(data_day['info'])
     with open('json_files/week_statistics.json') as json_file:
         data_week = json.load(json_file)
     with open('json_files/month_statistics.json') as json_file:
         data_month = json.load(json_file)
+    for i in range(1, len(data_day['info']) + 1):
+        data_day['info'][i-1]['number'] = i
+    for i in range(1, len(data_week['info']) + 1):
+        data_week['info'][i-1]['number'] = i
+    for i in range(1, len(data_month['info']) + 1):
+        data_month['info'][i-1]['number'] = i
     data = {
-        "day": data_day['day'],
-        "week": data_week['week'],
-        "month": data_month['month']
+        "day": data_day['info'],
+        "week": data_week['info'],
+        "month": data_month['info']
     }
     return render_template('statistics.html', data=data)
 
@@ -29,6 +36,16 @@ def statistics():
 def screen_time():
     with open('json_files/screen_time.json') as json_file:
         data = json.load(json_file)
+
+    time = data['totalTime']
+    hours = int(time / 3600)
+    minutes = int((time - hours*3600) / 60)
+    seconds = int((time - hours*3600) - minutes*60)
+
+    data['hours'] = hours
+    data['minutes'] = minutes
+    data['seconds'] = seconds
+
     first_awake = int(data["firstAwake"] / 60)
     first_awake_hours = int(first_awake / 60)
     first_awake_minutes = int(first_awake % 60)
@@ -121,6 +138,25 @@ def json_real_time():
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
+
+
+@app.route('/get_values', methods=['GET'])
+def get_values():
+    with open('json_files/real_time.json') as json_file:
+        data = json.load(json_file)
+    if not data['isScreenOn']:
+        time = int(data["timeInfo"] / 60)
+        time_hours = int(time / 60)
+        time_minutes = int(time % 60)
+        hours = f"{time_hours}"
+        minutes = f"{time_minutes}"
+        if time_hours < 10:
+            hours = f"0{time_hours}"
+        if time_minutes < 10:
+            minutes = f"0{time_minutes}"
+        data["timeInfo"] = f"{hours}:{minutes}"
+
+    return data
 
 
 if __name__ == '__main__':

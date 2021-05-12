@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>IOT project</title>
     <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
@@ -36,16 +37,16 @@
             <table class="table table-condensed" style="margin-bottom: 80px">
                     <tbody>
                         <tr>
-                            <td><strong>Is Screen On: </strong>{{data["isScreenOn"]}}</td>
-                            <td id="isScreenOn"></td>
+                            <td><strong>Is Screen On:</strong></td>
+                            <td id="isScreenOn">{% if data["isScreenOn"] %}Yes{% else %}No{% endif %}</td>
                         </tr>
                         <tr>
-                            <td><strong>Time Info: </strong>{{data["timeInfo"]}}</td>
-                            <td id="timeInfo"></td>
+                            <td><strong>Time Info:</strong></td>
+                            <td id="timeInfo">{{data["timeInfo"]}}</td>
                         </tr>
                         <tr>
-                            <td><strong>Last App: </strong>{{data["lastApp"]}}</td>
-                            <td id="lastApp"></td>
+                            <td><strong>Last App:</strong></td>
+                            <td id="lastApp">{{data["lastApp"]}}</td>
                         </tr>
                     </tbody>
             </table>
@@ -53,15 +54,37 @@
             <h5><strong>Обозначения:</strong></h5>
             <h6><strong>Is Screen On</strong> - включен ли сейчас экран</h6>
             <h6><strong>Time Info </strong> - если экран включен, то это продолжительность текущей сессии (сколько времени уже включен экран) в секундах;</h6>
-            <h6 style="margin-left: 94px">если экран выключен, то это время последней активности (когда был включен экран)</h6>
+            <h6 style="margin-left: 94px"> - если экран выключен, то это время последней активности (когда был включен экран)</h6>
             <h6><strong>Last App</strong> - имя приложения, которое активно либо сейчас (если экран включен), либо которое было активно последним (если экран выключен)</h6>
 
 </div>
 
 </body>
 <script>
+    const $isScreenOn = $('#isScreenOn');
+    const $timeInfo = $('#timeInfo');
+    const $lastApp = $('#lastApp');
 
     $(document).ready(function() {
+        setInterval(
+          function()
+          {
+             $.getJSON(
+                'http://127.0.0.1:5000/get_values',
+                {},
+                function(data)
+                {
+                    if (data['isScreenOn'] === false) {
+                        $isScreenOn.html('No');
+                    }
+                    else {
+                        $isScreenOn.html('Yes');
+                    }
+                    $timeInfo.html(data['timeInfo']);
+                    $lastApp.html(data['lastApp']);
+                });
+          },
+          1000);
 
     } );
 

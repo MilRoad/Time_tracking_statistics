@@ -1,1 +1,1 @@
-{"month": [{"number": 1, "appName": "Pixel Launcher", "usagePercentage": 345, "usageDuration": 234}, {"number": 2, "appName": "RouteVisual", "usagePercentage": 58, "usageDuration": 123400}, {"number": 3, "appName": "Chrome", "usagePercentage": 23, "usageDuration": 432130303003}]}
+{"interval": "month", "info": [{"appName": "Pixel Launcher", "usagePercentage": 48, "usageDuration": 6345}, {"appName": "RouteVisual", "usagePercentage": 58, "usageDuration": 1234}, {"appName": "Chrome", "usagePercentage": 23, "usageDuration": 4321}]}
