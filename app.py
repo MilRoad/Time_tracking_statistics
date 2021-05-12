@@ -18,12 +18,47 @@ def statistics():
         data_week = json.load(json_file)
     with open('json_files/month_statistics.json') as json_file:
         data_month = json.load(json_file)
+
     for i in range(1, len(data_day['info']) + 1):
         data_day['info'][i-1]['number'] = i
+        duration = int(data_day['info'][i-1]["usageDuration"] / 60)
+        duration_hours = int(duration / 60)
+        print(duration_hours)
+        duration_minutes = int(duration % 60)
+        print(duration_minutes)
+        hours = f"{duration_hours}"
+        minutes = f"{duration_minutes}"
+        if duration_hours < 10:
+            hours = f"0{duration_hours}"
+        if duration_minutes < 10:
+            minutes = f"0{duration_minutes}"
+        print(data_day['info'][i-1]["usageDuration"])
+        data_day['info'][i-1]["usageDuration"] = f"{hours}:{minutes}"
     for i in range(1, len(data_week['info']) + 1):
         data_week['info'][i-1]['number'] = i
+        duration = int(data_week['info'][i - 1]["usageDuration"] / 60)
+        duration_hours = int(duration / 60)
+        duration_minutes = int(duration % 60)
+        hours = f"{duration_hours}"
+        minutes = f"{duration_minutes}"
+        if duration_hours < 10:
+            hours = f"0{duration_hours}"
+        if duration_minutes < 10:
+            minutes = f"0{duration_minutes}"
+        data_week['info'][i - 1]["usageDuration"] = f"{hours}:{minutes}"
     for i in range(1, len(data_month['info']) + 1):
         data_month['info'][i-1]['number'] = i
+        duration = int(data_month['info'][i - 1]["usageDuration"] / 60)
+        duration_hours = int(duration / 60)
+        duration_minutes = int(duration % 60)
+        hours = f"{duration_hours}"
+        minutes = f"{duration_minutes}"
+        if duration_hours < 10:
+            hours = f"0{duration_hours}"
+        if duration_minutes < 10:
+            minutes = f"0{duration_minutes}"
+        data_month['info'][i - 1]["usageDuration"] = f"{hours}:{minutes}"
+
     data = {
         "day": data_day['info'],
         "week": data_week['info'],

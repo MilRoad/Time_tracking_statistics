@@ -38,7 +38,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Is Screen On:</strong></td>
-                            <td id="isScreenOn">{% if data["isScreenOn"] %}Yes{% else %}No{% endif %}</td>
+                            <td id="isScreenOn">{% if data["isScreenOn"] %}True{% else %}False{% endif %}</td>
                         </tr>
                         <tr>
                             <td><strong>Time Info:</strong></td>
@@ -75,10 +75,10 @@
                 function(data)
                 {
                     if (data['isScreenOn'] === false) {
-                        $isScreenOn.html('No');
+                        $isScreenOn.html('False');
                     }
                     else {
-                        $isScreenOn.html('Yes');
+                        $isScreenOn.html('True');
                     }
                     $timeInfo.html(data['timeInfo']);
                     $lastApp.html(data['lastApp']);
