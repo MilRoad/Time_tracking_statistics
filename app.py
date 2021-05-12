@@ -11,11 +11,11 @@ def index():
 
 @app.route('/statistics')
 def statistics():
-    with open('day_statistics.json') as json_file:
+    with open('json_files/day_statistics.json') as json_file:
         data_day = json.load(json_file)
-    with open('week_statistics.json') as json_file:
+    with open('json_files/week_statistics.json') as json_file:
         data_week = json.load(json_file)
-    with open('month_statistics.json') as json_file:
+    with open('json_files/month_statistics.json') as json_file:
         data_month = json.load(json_file)
     data = {
         "day": data_day['day'],
@@ -27,7 +27,7 @@ def statistics():
 
 @app.route('/screen-time')
 def screen_time():
-    with open('screen_time.json') as json_file:
+    with open('json_files/screen_time.json') as json_file:
         data = json.load(json_file)
     first_awake = int(data["firstAwake"] / 60)
     first_awake_hours = int(first_awake / 60)
@@ -55,7 +55,7 @@ def screen_time():
 
 @app.route('/real-time')
 def real_time():
-    with open('real_time.json') as json_file:
+    with open('json_files/real_time.json') as json_file:
         data = json.load(json_file)
     if not data['isScreenOn']:
         time = int(data["timeInfo"] / 60)
@@ -77,7 +77,7 @@ def real_time():
 def json_day():
     request_data = request.get_json()
     if request_data:
-        with open('day_statistics.json', 'w') as f:
+        with open('json_files/day_statistics.json', 'w') as f:
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
@@ -87,7 +87,7 @@ def json_day():
 def json_week():
     request_data = request.get_json()
     if request_data:
-        with open('week_statistics.json', 'w') as f:
+        with open('json_files/week_statistics.json', 'w') as f:
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
@@ -97,7 +97,7 @@ def json_week():
 def json_month():
     request_data = request.get_json()
     if request_data:
-        with open('month_statistics.json', 'w') as f:
+        with open('json_files/month_statistics.json', 'w') as f:
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
@@ -107,7 +107,7 @@ def json_month():
 def json_screen_time():
     request_data = request.get_json()
     if request_data:
-        with open('screen_time.json', 'w') as f:
+        with open('json_files/screen_time.json', 'w') as f:
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
@@ -117,7 +117,7 @@ def json_screen_time():
 def json_real_time():
     request_data = request.get_json()
     if request_data:
-        with open('real_time.json', 'w') as f:
+        with open('json_files/real_time.json', 'w') as f:
             json.dump(request_data, f)
         return "Это успех, молодой человек!"
     return "Вот незадача! Неудача!"
